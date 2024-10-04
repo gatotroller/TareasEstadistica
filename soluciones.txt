@@ -39,10 +39,9 @@ ORDER BY avg_grade DESC
 -- poner solución debajo de este mensaje
 
 SELECT
+	DISTINCT
 	a.nombre,
-	a.apellido,
-	c.nombre_materia,
-	c.calificacion
+	a.apellido
 FROM alumnos AS a
 	JOIN calificaciones AS c ON a.expediente = c.expediente
 WHERE c.calificacion IS NOT NULL

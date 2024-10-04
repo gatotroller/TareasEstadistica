@@ -1,0 +1,70 @@
+#######################################################################################################################################
+# Teoría
+
+1. b)
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+2. a)
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+3. En la primera forma normal
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+4. HAVING se utiliza para filtrar la tabla despues de haber utilizado un GROUP BY, es necesario utilizar el GROUP BY para utilizar HAVING, mientras que
+   WHERE Tambien filtra la tabla pero antes del GROUP BY y no es necesario utilizar GROUP BY despues del WHERE
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+5. c)
+#######################################################################################################################################
+# Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT
+	nombre_materia,
+	ROUND(AVG(calificacion), 2) AS avg_grade
+FROM calificaciones
+WHERE calificacion IS NOT NULL
+GROUP BY nombre_materia
+ORDER BY avg_grade DESC
+
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT
+	a.nombre,
+	a.apellido,
+	c.nombre_materia,
+	c.calificacion
+FROM alumnos AS a
+	JOIN calificaciones AS c ON a.expediente = c.expediente
+WHERE c.calificacion IS NOT NULL
+ORDER BY a.apellido ASC
+
+```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT
+	a.expediente,
+	a.nombre,
+	a.apellido,
+	c.nombre_materia,
+	MAX(c.calificacion) AS maxima_calificacion
+FROM alumnos AS a
+	JOIN calificaciones AS c ON a.expediente = c.expediente
+WHERE c.calificacion IS NOT NULL
+GROUP BY a.expediente
+ORDER BY a.expediente ASC
+
+```
